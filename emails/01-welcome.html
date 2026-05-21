@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Welcome to Lale Lotto</title>
+  <!--
+    EMAIL 1 — Welcome / onboarding (transactional + onboarding)
+    Merge tags: {{first_name}}, {{play_url}}, {{check_url}}, {{help_url}},
+                {{responsible_url}}, {{unsubscribe_url}}, {{operator_name}},
+                {{licence_number}}, {{regulator}}
+    NOTE: No player login — entries are checked by email + a unique code, so this
+    email points to the winnings checker ({{check_url}}) rather than an account.
+  -->
+</head>
+<body style="margin:0;padding:0;background:#0B1F16;font-family:Arial,Helvetica,sans-serif;">
+  <span style="display:none;max-height:0;overflow:hidden;opacity:0;">Welcome to Lale Lotto — pick your first six numbers. 18+, play responsibly.</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0B1F16;">
+    <tr><td align="center" style="padding:28px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#0F2A1E;border-radius:18px;overflow:hidden;">
+
+        <!-- Header -->
+        <tr><td style="background:#143626;padding:24px 32px;">
+          <span style="font-family:Arial,sans-serif;font-size:22px;font-weight:bold;color:#2ECC71;">🌷 Lale</span><span style="font-size:22px;font-weight:bold;color:#F4F1FF;"> Lotto</span>
+        </td></tr>
+
+        <!-- Hero -->
+        <tr><td style="padding:40px 32px 8px;">
+          <h1 style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:26px;color:#F4F1FF;">Welcome, {{first_name}} 🎉</h1>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.6;color:#B3A9DC;">Welcome aboard! You're all set to pick six lucky numbers and join our next 6/49 draw — every Wednesday and Saturday at 21:00. No account or password: every entry comes with a unique code so you can check your numbers and any prize by email.</p>
+        </td></tr>
+
+        <!-- CTA -->
+        <tr><td align="center" style="padding:14px 32px 30px;">
+          <a href="{{play_url}}" style="display:inline-block;background:#2ECC71;color:#2A1500;font-size:16px;font-weight:bold;text-decoration:none;padding:15px 34px;border-radius:999px;">Pick your numbers →</a>
+        </td></tr>
+
+        <!-- Steps -->
+        <tr><td style="padding:0 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top" style="padding:12px 0;font-size:14px;color:#B3A9DC;line-height:1.6;">
+                <strong style="color:#2ECC71;">1.</strong> Choose 6 numbers from 1–49, or tap Lucky Dip.<br/>
+                <strong style="color:#2ECC71;">2.</strong> Confirm your line — just ₺20 each.<br/>
+                <strong style="color:#2ECC71;">3.</strong> Watch the live draw, then check your unique code to see any win.
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+
+        <!-- Responsible play -->
+        <tr><td style="padding:18px 32px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#143626;border-radius:12px;">
+            <tr><td style="padding:18px 20px;font-size:13px;line-height:1.6;color:#B3A9DC;">
+              <strong style="color:#F4F1FF;">Play it safe.</strong> Set a budget that's right for you and stick to it. You can set deposit limits or take a break any time.
+              <a href="{{responsible_url}}" style="color:#2ECC71;text-decoration:underline;">Responsible play tools →</a>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td style="padding:24px 32px 32px;border-top:1px solid rgba(255,255,255,0.08);">
+          <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#8E84B8;">Need a hand? Visit our <a href="{{help_url}}" style="color:#B3A9DC;">Help centre</a> or <a href="{{check_url}}" style="color:#B3A9DC;">check an entry</a>.</p>
+          <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#8E84B8;">Lale Lotto is operated by {{operator_name}}, licence no. {{licence_number}} issued by {{regulator}}. You must be 18 or over to play. Gambling can be addictive — please play responsibly.</p>
+          <p style="margin:0;font-size:12px;color:#8E84B8;">You're receiving this because you signed up to play. <a href="{{unsubscribe_url}}" style="color:#B3A9DC;">Unsubscribe from marketing emails</a>.</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 You won 95,000 kisses! · Lale Lotto</title>
+  <!--
+    HARMLESS PRANK PAGE — "You won 95,000 kisses".
+    * 100% static, no backend: nothing typed is stored, sent, or collected.
+    * The "code" and "email" fields are cosmetic — any input leads to the joke.
+    * "Withdraw" just rains kiss emojis, then reveals it's a prank.
+    * Never asks for money, payment, or card/bank details.
+    Customise: change PRANKSTER_NAME below to sign your prank.
+  -->
+  <style>
+    :root{
+      --bg:#0B1F16; --surface:#143626; --surface-2:#1A4630; --line:rgba(255,255,255,.1);
+      --green:#2ECC71; --green-2:#1FA85A; --red:#E23E57; --pink:#FF6B9D;
+      --text:#F4F1FF; --muted:#B7D8C5;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      font-family:"Segoe UI",system-ui,Arial,sans-serif; color:var(--text);
+      background:
+        radial-gradient(900px 500px at 80% -10%, rgba(46,204,113,.22), transparent 60%),
+        radial-gradient(700px 420px at 10% 0%, rgba(226,62,87,.18), transparent 55%),
+        var(--bg);
+      min-height:100%; display:grid; place-items:center; padding:24px; overflow-x:hidden;
+    }
+    .card{
+      width:100%; max-width:480px; background:linear-gradient(160deg,var(--surface-2),var(--surface));
+      border:1px solid var(--line); border-radius:24px; padding:34px 30px; text-align:center;
+      box-shadow:0 24px 60px rgba(0,0,0,.5); position:relative; z-index:2;
+    }
+    .badge{
+      display:inline-block; font-size:.8rem; font-weight:700; letter-spacing:.05em;
+      color:var(--green); background:rgba(46,204,113,.12); border:1px solid rgba(46,204,113,.3);
+      padding:7px 16px; border-radius:999px; margin-bottom:18px;
+    }
+    h1{font-size:1.9rem; margin:.2em 0; line-height:1.15}
+    .prize{
+      font-size:2.6rem; font-weight:800; margin:6px 0 4px;
+      background:linear-gradient(135deg,var(--green),var(--pink)); -webkit-background-clip:text;
+      background-clip:text; color:transparent;
+    }
+    p.sub{color:var(--muted); margin:6px 0 22px; font-size:.96rem; line-height:1.55}
+    label{display:block; text-align:left; font-size:.8rem; color:var(--muted); margin:14px 0 6px}
+    input{
+      width:100%; padding:13px 15px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(0,0,0,.25); color:var(--text); font-size:1rem; outline:none;
+    }
+    input:focus{border-color:var(--green); box-shadow:0 0 0 3px rgba(46,204,113,.35)}
+    .btn{
+      width:100%; margin-top:20px; padding:15px; border:0; border-radius:999px; cursor:pointer;
+      font-size:1.05rem; font-weight:800; color:#06231A;
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      box-shadow:0 12px 30px rgba(46,204,113,.4); transition:transform .15s, box-shadow .2s;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(46,204,113,.55)}
+    .btn.red{color:#fff; background:linear-gradient(135deg,var(--red),#C8102E); box-shadow:0 12px 30px rgba(226,62,87,.4)}
+    .note{font-size:.74rem; color:var(--muted); margin-top:16px; opacity:.8}
+    .balance{
+      font-size:2.2rem; font-weight:800; color:var(--green); margin:10px 0;
+      background:rgba(46,204,113,.1); border:1px dashed rgba(46,204,113,.4); border-radius:16px; padding:18px;
+    }
+    .spinner{width:46px;height:46px;border:5px solid rgba(255,255,255,.15);border-top-color:var(--green);border-radius:50%;margin:14px auto;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .hidden{display:none}
+    .runaway{position:relative; margin-top:14px; height:42px}
+    .runaway button{
+      position:absolute; left:50%; transform:translateX(-50%); transition:all .18s ease;
+      background:transparent; color:var(--muted); border:1px solid var(--line); border-radius:999px;
+      padding:9px 16px; font-size:.82rem; cursor:pointer;
+    }
+    .kiss{position:fixed; top:-40px; font-size:1.8rem; z-index:1; pointer-events:none; animation:fall linear forwards}
+    @keyframes fall{to{transform:translateY(105vh) rotate(360deg); opacity:.85}}
+    .reveal h1{font-size:2rem}
+    .reveal .big{font-size:3rem; margin:6px 0}
+  </style>
+</head>
+<body>
+
+  <!-- ===== Step 1: claim ===== -->
+  <div class="card" id="claim">
+    <span class="badge">🎲 Lale Lotto Kiss Jackpot™</span>
+    <h1>Your email was randomly selected!</h1>
+    <div class="prize">95,000 KISSES 💋</div>
+    <p class="sub">Congratulations! Enter your lucky code and email to verify your kiss winnings.</p>
+
+    <label for="code">Your lucky code</label>
+    <input id="code" type="text" placeholder="e.g. KISS-9X42" autocomplete="off" />
+
+    <label for="email">Email address</label>
+    <input id="email" type="text" placeholder="you@example.com" autocomplete="off" />
+
+    <button class="btn" id="checkBtn">Check my winnings 💋</button>
+    <p class="note">🔒 Totally fake & for fun — this page saves nothing and sends nothing anywhere.</p>
+  </div>
+
+  <!-- ===== Step 2: verifying ===== -->
+  <div class="card hidden" id="loading">
+    <div class="spinner"></div>
+    <h1>Verifying your kisses…</h1>
+    <p class="sub" id="loadingMsg">Counting 95,000 kisses one by one 💋</p>
+  </div>
+
+  <!-- ===== Step 3: winnings ===== -->
+  <div class="card hidden" id="winnings">
+    <span class="badge">✅ Verified winner</span>
+    <h1>It's official — you won!</h1>
+    <div class="balance">💋 95,000 kisses</div>
+    <p class="sub">Your kiss balance is ready. Withdraw them straight to your face.</p>
+    <button class="btn red" id="withdrawBtn">Withdraw my 95,000 kisses 💸💋</button>
+    <div class="runaway">
+      <button id="runaway">…or take 95,000 € instead</button>
+    </div>
+    <p class="note">No banks, no fees, no card details — kisses only. 💚</p>
+  </div>
+
+  <!-- ===== Step 4: reveal ===== -->
+  <div class="card hidden reveal" id="reveal">
+    <div class="big">😘🎉</div>
+    <h1>GOTCHA!</h1>
+    <p class="sub">You just got pranked by <b id="who">a friend</b>.<br>
+    No euros — just <b>95,000 kisses</b> heading your way. 💋<br><br>
+    (Relax: nothing you typed was saved or sent. It's a static joke page.)</p>
+    <button class="btn" onclick="location.reload()">😂 Run it again</button>
+  </div>
+
+  <script>
+    /* ====== Change this to sign your prank ====== */
+    const PRANKSTER_NAME = "your name here";
+    /* ============================================ */
+
+    const $ = (id) => document.getElementById(id);
+    $("who").textContent = PRANKSTER_NAME;
+
+    function show(id){
+      ["claim","loading","winnings","reveal"].forEach(s => $(s).classList.add("hidden"));
+      $(id).classList.remove("hidden");
+    }
+
+    $("checkBtn").addEventListener("click", () => {
+      show("loading");
+      const msgs = ["Counting 95,000 kisses one by one 💋","Wrapping them in a bow 🎀","Almost there… 😘"];
+      let i = 0;
+      const t = setInterval(() => { i++; if (msgs[i]) $("loadingMsg").textContent = msgs[i]; }, 600);
+      setTimeout(() => { clearInterval(t); show("winnings"); }, 2000);
+    });
+
+    function rainKisses(n){
+      const emojis = ["💋","😘","💚","❤️","💕","✨"];
+      for (let k = 0; k < n; k++){
+        const e = document.createElement("div");
+        e.className = "kiss";
+        e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        e.style.left = Math.random()*100 + "vw";
+        e.style.fontSize = (1.2 + Math.random()*2) + "rem";
+        e.style.animationDuration = (2.5 + Math.random()*2.5) + "s";
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 5500);
+      }
+    }
+
+    $("withdrawBtn").addEventListener("click", () => {
+      rainKisses(60);
+      setTimeout(() => { rainKisses(40); show("reveal"); }, 700);
+    });
+
+    // The "take 95,000 € instead" button can never be caught :)
+    const run = $("runaway");
+    function flee(){
+      const offset = (Math.random() * 120 - 60);
+      run.style.left = `calc(50% + ${offset}px)`;
+      run.style.top = (Math.random() * -10) + "px";
+    }
+    run.addEventListener("mouseover", flee);
+    run.addEventListener("click", (e) => { e.preventDefault(); flee(); });
+  </script>
+</body>
+</html>

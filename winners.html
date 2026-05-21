@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winners &amp; players — Lale 6/49 | Lale Lotto</title>
+  <meta name="description" content="The public Lale Lotto player database: every entry, who won and the payout status of each prize. Information only — there is no play or payment on this site." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Lale Lotto home">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DE08A"/><stop offset="1" stop-color="#1FA85A"/></linearGradient>
+            <linearGradient id="hr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E94E66"/><stop offset="1" stop-color="#C8102E"/></linearGradient>
+          </defs>
+          <g transform="translate(8,6)">
+            <path d="M24 36 C15 31 8 23 8 11 C17 15 22 24 24 36 Z" fill="url(#hg)"/>
+            <path d="M24 36 C33 31 40 23 40 11 C31 15 26 24 24 36 Z" fill="url(#hg)"/>
+            <path d="M24 6 C20 15 20 27 24 37 C28 27 28 15 24 6 Z" fill="url(#hr)"/>
+            <path d="M14 34 H34 L30 45 C30 49 18 49 18 45 Z" fill="url(#hg)"/>
+          </g>
+        </svg>
+        <span><span class="lale">Lale</span> Lotto</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="winners.html" aria-current="page">Winners</a></li>
+        <li><a href="check.html">Check winnings</a></li>
+        <li><a href="index.html#how">How it works</a></li>
+        <li><a href="responsible.html">Responsible play</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="check.html">Check winnings</a>
+        <a class="btn btn-primary" href="winners.html" aria-current="page">Winners</a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="center" style="max-width:680px;margin:0 auto 40px;">
+        <span class="eyebrow">Player database</span>
+        <h1 style="font-size:2.4rem;">Winners &amp; players</h1>
+        <p>A public record of every Lale 6/49 entry, who won and whether each prize has been paid. This page is for information only — you can't play or pay anything here.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="db-stats" data-db-stats>
+        <div class="db-stat"><b data-stat-players>—</b><small>Players</small></div>
+        <div class="db-stat"><b data-stat-winners>—</b><small>Winners</small></div>
+        <div class="db-stat"><b data-stat-paid>—</b><small>Prizes paid</small></div>
+        <div class="db-stat"><b data-stat-pending>—</b><small>Awaiting payout</small></div>
+      </div>
+
+      <!-- Controls -->
+      <div class="db-controls">
+        <input class="db-search" type="search" data-db-search placeholder="Search by name, city or code…" aria-label="Search players" />
+        <div class="db-filters" data-db-filters role="group" aria-label="Filter players">
+          <button class="db-filter is-active" data-filter="all">All</button>
+          <button class="db-filter" data-filter="winners">Winners</button>
+          <button class="db-filter" data-filter="paid">Paid</button>
+          <button class="db-filter" data-filter="pending">Awaiting payout</button>
+          <button class="db-filter" data-filter="none">No prize</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="db-table-wrap">
+        <table class="db-table" data-db-table>
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Draw</th>
+              <th>Their numbers</th>
+              <th class="num-col">Matched</th>
+              <th>Prize</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody data-db-rows>
+            <tr><td colspan="6" class="db-empty">Loading player database…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="center muted" style="margin-top:22px;font-size:.85rem;">
+        Emails and codes are partly hidden to protect players. Prizes are credited automatically — Lale Lotto never asks for a fee or a password to release a win.
+        Is one of these entries yours? <a href="check.html">Check it with your code →</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:0;margin:0;padding:0;">
+        <span>© <span data-year>2026</span> Lale Lotto. All rights reserved.</span>
+        <span style="display:flex;align-items:center;gap:10px;"><span class="age-chip">18+</span> Information only · <a href="responsible.html">Get support</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="data/supabase-config.js"></script>
+  <script src="data/database.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

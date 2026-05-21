@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>The Lale 6/49 results are in</title>
+  <!--
+    EMAIL 3 — Draw results notification (transactional)
+    Merge tags: {{first_name}}, {{draw_name}}, {{draw_number}}, {{draw_date}},
+                {{winning_numbers}}, {{bonus_number}}, {{your_numbers}},
+                {{matches}}, {{check_code}}, {{check_url}}, {{play_url}}, {{responsible_url}},
+                {{unsubscribe_url}}, {{operator_name}}, {{licence_number}}, {{regulator}}
+    NOTE: This is a neutral results notice. There is no player login — the reader
+    confirms this entry by entering their email + {{check_code}} on the winnings
+    checker ({{check_url}}). It never asks the player to pay a fee or share card
+    details to "claim" anything — any winnings are paid out automatically.
+  -->
+</head>
+<body style="margin:0;padding:0;background:#0B1F16;font-family:Arial,Helvetica,sans-serif;">
+  <span style="display:none;max-height:0;overflow:hidden;opacity:0;">{{draw_name}} draw #{{draw_number}} results — check your numbers.</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0B1F16;">
+    <tr><td align="center" style="padding:28px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#0F2A1E;border-radius:18px;overflow:hidden;">
+
+        <tr><td style="background:#143626;padding:24px 32px;">
+          <span style="font-size:22px;font-weight:bold;color:#2ECC71;">🌷 Lale</span><span style="font-size:22px;font-weight:bold;color:#F4F1FF;"> Lotto</span>
+        </td></tr>
+
+        <tr><td style="padding:36px 32px 6px;">
+          <p style="margin:0 0 6px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8E84B8;">{{draw_name}} · Draw #{{draw_number}} · {{draw_date}}</p>
+          <h1 style="margin:0 0 8px;font-size:24px;color:#F4F1FF;">The results are in, {{first_name}}</h1>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#B3A9DC;">Here are tonight's winning numbers. Compare them with your line below.</p>
+        </td></tr>
+
+        <!-- Winning numbers -->
+        <tr><td style="padding:24px 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#143626;border-radius:14px;">
+            <tr><td style="padding:22px 24px;">
+              <p style="margin:0 0 10px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8E84B8;">Winning numbers</p>
+              <p style="margin:0 0 6px;font-size:24px;font-weight:bold;color:#2ECC71;letter-spacing:2px;">{{winning_numbers}}</p>
+              <p style="margin:0;font-size:13px;color:#B3A9DC;">Bonus ball: <strong style="color:#E94E66;">{{bonus_number}}</strong></p>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- Player line -->
+        <tr><td style="padding:14px 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
+            <tr><td style="padding:18px 24px;">
+              <p style="margin:0 0 6px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8E84B8;">Your numbers</p>
+              <p style="margin:0 0 6px;font-size:20px;font-weight:bold;color:#F4F1FF;letter-spacing:2px;">{{your_numbers}}</p>
+              <p style="margin:0 0 8px;font-size:13px;color:#B3A9DC;">Matches this draw: <strong style="color:#2ECC71;">{{matches}}</strong></p>
+              <p style="margin:0;font-size:13px;color:#B3A9DC;">Your code: <strong style="color:#F4F1FF;letter-spacing:1px;">{{check_code}}</strong></p>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <tr><td style="padding:8px 32px 0;">
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B3A9DC;">Any prize you've won is paid out automatically — there's nothing to pay and no details to confirm. Lale Lotto will never ask you to send money or share a password to release a prize.</p>
+        </td></tr>
+
+        <tr><td align="center" style="padding:24px 32px 12px;">
+          <a href="{{check_url}}" style="display:inline-block;background:#2ECC71;color:#2A1500;font-size:15px;font-weight:bold;text-decoration:none;padding:14px 30px;border-radius:999px;">Check this entry</a>
+        </td></tr>
+        <tr><td align="center" style="padding:0 32px 28px;">
+          <a href="{{play_url}}" style="font-size:14px;color:#2ECC71;text-decoration:underline;">Enter the next draw →</a>
+        </td></tr>
+
+        <tr><td style="padding:22px 32px 32px;border-top:1px solid rgba(255,255,255,0.08);">
+          <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#8E84B8;">Feeling like it's not fun anymore? You can set limits or take a break any time — <a href="{{responsible_url}}" style="color:#B3A9DC;">responsible play tools</a>.</p>
+          <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#8E84B8;">Operated by {{operator_name}}, licence no. {{licence_number}} issued by {{regulator}}. 18+ only. In any dispute, the operator's certified draw records are final.</p>
+          <p style="margin:0;font-size:12px;color:#8E84B8;"><a href="{{unsubscribe_url}}" style="color:#B3A9DC;">Manage email preferences</a></p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

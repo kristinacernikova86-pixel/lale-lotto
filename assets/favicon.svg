@@ -1,0 +1,19 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lale Lotto">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3DE08A"/>
+      <stop offset="1" stop-color="#1FA85A"/>
+    </linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E94E66"/>
+      <stop offset="1" stop-color="#C8102E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0F2A1E"/>
+  <g transform="translate(8,6)">
+    <path d="M24 36 C15 31 8 23 8 11 C17 15 22 24 24 36 Z" fill="url(#g)"/>
+    <path d="M24 36 C33 31 40 23 40 11 C31 15 26 24 24 36 Z" fill="url(#g)"/>
+    <path d="M24 6 C20 15 20 27 24 37 C28 27 28 15 24 6 Z" fill="url(#r)"/>
+    <path d="M14 34 H34 L30 45 C30 49 18 49 18 45 Z" fill="url(#g)"/>
+  </g>
+</svg>

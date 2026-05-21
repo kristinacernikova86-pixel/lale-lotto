@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Your Lale Lotto ticket is confirmed</title>
+  <!--
+    EMAIL 2 — Ticket purchase confirmation (transactional)
+    Merge tags: {{first_name}}, {{order_id}}, {{draw_name}}, {{draw_date}},
+                {{numbers}} (e.g. 04 · 11 · 23 · 28 · 37 · 45), {{lines}},
+                {{amount}}, {{payment_method}}, {{check_code}}, {{check_url}}, {{results_url}},
+                {{unsubscribe_url}}, {{operator_name}}, {{licence_number}}, {{regulator}}
+    NOTE: No player login — {{check_code}} is the unique code the player enters with
+    their email on the winnings checker ({{check_url}}) to see this entry's result.
+  -->
+</head>
+<body style="margin:0;padding:0;background:#0B1F16;font-family:Arial,Helvetica,sans-serif;">
+  <span style="display:none;max-height:0;overflow:hidden;opacity:0;">Order {{order_id}} confirmed — you're in the {{draw_name}} draw on {{draw_date}}.</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0B1F16;">
+    <tr><td align="center" style="padding:28px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#0F2A1E;border-radius:18px;overflow:hidden;">
+
+        <tr><td style="background:#143626;padding:24px 32px;">
+          <span style="font-size:22px;font-weight:bold;color:#2ECC71;">🌷 Lale</span><span style="font-size:22px;font-weight:bold;color:#F4F1FF;"> Lotto</span>
+        </td></tr>
+
+        <tr><td style="padding:36px 32px 6px;">
+          <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+            <td style="background:rgba(62,207,142,0.15);border:1px solid #3ECf8e;border-radius:999px;padding:6px 14px;font-size:13px;color:#3ECf8e;font-weight:bold;">✓ Payment received</td>
+          </tr></table>
+          <h1 style="margin:16px 0 8px;font-size:24px;color:#F4F1FF;">You're in the draw, {{first_name}}!</h1>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#B3A9DC;">Here's your confirmation for <strong style="color:#F4F1FF;">{{draw_name}}</strong> on <strong style="color:#2ECC71;">{{draw_date}}</strong>.</p>
+        </td></tr>
+
+        <!-- Numbers -->
+        <tr><td style="padding:24px 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#143626;border-radius:14px;">
+            <tr><td style="padding:22px 24px;">
+              <p style="margin:0 0 12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8E84B8;">Your numbers</p>
+              <p style="margin:0;font-size:24px;font-weight:bold;color:#2ECC71;letter-spacing:2px;">{{numbers}}</p>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- Unique code -->
+        <tr><td style="padding:14px 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid rgba(46,204,113,0.4);border-radius:14px;">
+            <tr><td style="padding:18px 24px;">
+              <p style="margin:0 0 8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#8E84B8;">Your unique code</p>
+              <p style="margin:0 0 6px;font-size:22px;font-weight:bold;color:#F4F1FF;letter-spacing:2px;">{{check_code}}</p>
+              <p style="margin:0;font-size:13px;color:#B3A9DC;">Keep this safe — enter it with your email on the <a href="{{check_url}}" style="color:#2ECC71;">winnings checker</a> to see your result after the draw. No login or password needed.</p>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- Order summary -->
+        <tr><td style="padding:16px 32px 8px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#B3A9DC;">
+            <tr><td style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);">Order ID</td><td align="right" style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);color:#F4F1FF;">{{order_id}}</td></tr>
+            <tr><td style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);">Lines</td><td align="right" style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);color:#F4F1FF;">{{lines}}</td></tr>
+            <tr><td style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);">Payment method</td><td align="right" style="padding:8px 0;border-top:1px solid rgba(255,255,255,0.08);color:#F4F1FF;">{{payment_method}}</td></tr>
+            <tr><td style="padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);font-weight:bold;color:#F4F1FF;">Total paid</td><td align="right" style="padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);font-weight:bold;color:#2ECC71;font-size:16px;">{{amount}}</td></tr>
+          </table>
+        </td></tr>
+
+        <tr><td align="center" style="padding:22px 32px 30px;">
+          <a href="{{check_url}}" style="display:inline-block;background:#2ECC71;color:#2A1500;font-size:15px;font-weight:bold;text-decoration:none;padding:14px 30px;border-radius:999px;">Check this entry</a>
+        </td></tr>
+
+        <tr><td style="padding:0 32px 8px;">
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B3A9DC;">We'll email you the results after the draw. You can also check your code anytime on the <a href="{{check_url}}" style="color:#2ECC71;">winnings checker</a>, or see every winning line on the <a href="{{results_url}}" style="color:#2ECC71;">results page</a>. Good luck! 🍀</p>
+        </td></tr>
+
+        <tr><td style="padding:24px 32px 32px;border-top:1px solid rgba(255,255,255,0.08);">
+          <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#8E84B8;">This is a transactional receipt for your records. Lale Lotto is operated by {{operator_name}}, licence no. {{licence_number}} issued by {{regulator}}. 18+ only — please play responsibly.</p>
+          <p style="margin:0;font-size:12px;color:#8E84B8;"><a href="{{unsubscribe_url}}" style="color:#B3A9DC;">Manage email preferences</a></p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

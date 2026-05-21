@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check your winnings — Lale 6/49 | Lale Lotto</title>
+  <meta name="description" content="Did your numbers come up? Enter the email you played with and the unique code from your Lale Lotto email to check your entry and any prize. No login, no password. 18+." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Lale Lotto home">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DE08A"/><stop offset="1" stop-color="#1FA85A"/></linearGradient>
+            <linearGradient id="hr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E94E66"/><stop offset="1" stop-color="#C8102E"/></linearGradient>
+          </defs>
+          <g transform="translate(8,6)">
+            <path d="M24 36 C15 31 8 23 8 11 C17 15 22 24 24 36 Z" fill="url(#hg)"/>
+            <path d="M24 36 C33 31 40 23 40 11 C31 15 26 24 24 36 Z" fill="url(#hg)"/>
+            <path d="M24 6 C20 15 20 27 24 37 C28 27 28 15 24 6 Z" fill="url(#hr)"/>
+            <path d="M14 34 H34 L30 45 C30 49 18 49 18 45 Z" fill="url(#hg)"/>
+          </g>
+        </svg>
+        <span><span class="lale">Lale</span> Lotto</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="winners.html">Winners</a></li>
+        <li><a href="check.html" aria-current="page">Check winnings</a></li>
+        <li><a href="index.html#how">How it works</a></li>
+        <li><a href="responsible.html">Responsible play</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="check.html" aria-current="page">Check winnings</a>
+        <a class="btn btn-primary" href="winners.html">Winners</a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="center" style="max-width:640px;margin:0 auto 40px;">
+        <span class="eyebrow">Winners' check</span>
+        <h1 style="font-size:2.4rem;">Did your numbers come up?</h1>
+        <p>No login, no password. Enter the email you played with and the unique code from your Lale Lotto email — we'll show your entry and any prize.</p>
+      </div>
+
+      <div class="check-wrap">
+        <!-- Checker form -->
+        <form class="check-card" data-check-form novalidate>
+          <div class="field">
+            <label for="check-email">Email address</label>
+            <input id="check-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="check-code">Your unique code</label>
+            <input id="check-code" name="code" type="text" autocomplete="off" spellcheck="false" placeholder="LALE-XXXX-XXXX" required />
+            <p class="field-hint">You'll find this in your entry-confirmation and results emails.</p>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" data-check-submit>Check my entry</button>
+          <p class="hint">🔒 Lale Lotto will never ask you to pay a fee or share a password to release a prize. Any winnings are credited automatically.</p>
+        </form>
+
+        <!-- Result region — filled in by js/main.js -->
+        <div class="check-result" data-check-result hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:0;margin:0;padding:0;">
+        <span>© <span data-year>2026</span> Lale Lotto. All rights reserved.</span>
+        <span style="display:flex;align-items:center;gap:10px;"><span class="age-chip">18+</span> Play responsibly · <a href="responsible.html">Get support</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="data/supabase-config.js"></script>
+  <script src="data/database.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

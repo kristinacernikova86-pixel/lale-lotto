@@ -1,0 +1,30 @@
+<svg width="280" height="72" viewBox="0 0 280 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lale Lotto">
+  <defs>
+    <linearGradient id="ll-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3DE08A"/>
+      <stop offset="1" stop-color="#1FA85A"/>
+    </linearGradient>
+    <linearGradient id="ll-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E94E66"/>
+      <stop offset="1" stop-color="#C8102E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tulip mark -->
+  <g transform="translate(8,6)">
+    <!-- side petals (gold) -->
+    <path d="M30 40 C20 35 12 26 12 13 C22 17 28 27 30 40 Z" fill="url(#ll-gold)"/>
+    <path d="M30 40 C40 35 48 26 48 13 C38 17 32 27 30 40 Z" fill="url(#ll-gold)"/>
+    <!-- center petal (red) -->
+    <path d="M30 8 C26 18 26 31 30 41 C34 31 34 18 30 8 Z" fill="url(#ll-red)"/>
+    <!-- cup -->
+    <path d="M19 38 H41 L37 50 C37 55 23 55 23 50 Z" fill="url(#ll-gold)"/>
+    <!-- stem -->
+    <rect x="28.6" y="50" width="2.8" height="9" rx="1.4" fill="url(#ll-gold)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="76" y="46" font-family="Sora, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#2ECC71">Lale</tspan><tspan fill="#F4F1FF"> Lotto</tspan>
+  </text>
+</svg>
