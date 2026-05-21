@@ -1,0 +1,12 @@
+# Never deploy secrets or local-only files
+api keys.txt
+api-keys.txt
+*.key
+*.pem
+.env
+.env.*
+.git
+.gitignore
+.claude
+node_modules
+Снимок экрана*.png

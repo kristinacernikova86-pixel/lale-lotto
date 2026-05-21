@@ -18,3 +18,5 @@ Thumbs.db
 .claude/
 Снимок экрана*.png
 *.screenshot.png
+
+.vercel
