@@ -240,6 +240,34 @@ a  { color: var(--gold); text-decoration: none; }
 .db-badge.is-pending { color: #FFC83D; background: rgba(255, 200, 61, .12); border-color: rgba(255, 200, 61, .35); }
 .db-badge.is-none { color: var(--muted); }
 
+/* ---------- Annual grand prize (winners page) ---------- */
+.grand-prize { margin-bottom: 26px; }
+.gp-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(46, 204, 113, .16), rgba(255, 200, 61, .10));
+  border: 1px solid rgba(46, 204, 113, .45);
+  border-radius: 20px; padding: 28px 30px;
+  box-shadow: 0 0 0 1px rgba(46, 204, 113, .18), var(--shadow);
+}
+.gp-main { min-width: 240px; }
+.gp-eyebrow {
+  display: inline-block; font-family: var(--font-head); font-weight: 700;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+}
+.gp-amount {
+  font-family: var(--font-head); font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--gold); line-height: 1.05; margin: 4px 0;
+}
+.gp-note { font-size: .9rem; color: var(--muted); margin: 6px 0 0; max-width: 48ch; }
+.gp-meta { display: grid; gap: 12px; }
+.gp-meta > div {
+  display: flex; flex-direction: column; gap: 2px;
+  border-left: 2px solid rgba(46, 204, 113, .4); padding-left: 14px;
+}
+.gp-meta span { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.gp-meta b { font-family: var(--font-head); color: var(--text); }
+.gp-pending { color: var(--gold) !important; }
+
 /* ---------- Banner ---------- */
 .banner {
   background: linear-gradient(135deg, rgba(226, 62, 87, .15), rgba(46, 204, 113, .12));

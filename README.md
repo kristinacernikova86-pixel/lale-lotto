@@ -52,6 +52,7 @@ lale-lotto/
 ├─ data/supabase-config.js   Your Supabase URL + public anon key go here
 ├─ data/supabase-setup.sql   Run this in Supabase to create the tables + security
 ├─ data/supabase-migration-international.sql  One-off: switch existing DB to int'l winners
+├─ data/supabase-migration-usd-grandprize.sql One-off: amounts → USD + annual grand prize
 ├─ css/styles.css        Whole design system (one file)
 ├─ js/main.js            Countdown, mobile nav, winners database, winnings checker
 ├─ assets/logo.svg       Full logo lockup

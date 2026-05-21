@@ -8,18 +8,10 @@
 --   4. Project Settings → API → copy the "Project URL" and the
 --      "anon public" key into data/supabase-config.js
 --
---   ALREADY set up an older version? Don't re-run this file (it skips
---   existing rows). Use data/supabase-migration-international.sql instead.
+--   ALREADY set up an older version? Don't re-run this file (it skips existing
+--   rows). Use the migration scripts in this folder instead.
 --
--- WHAT THIS DOES
---   • Creates two tables: draws and players
---   • Loads the sample data (replace it later with your real entries)
---   • Locks the data down with Row Level Security so the public key can ONLY:
---       - read the winners board (no emails / codes exposed), and
---       - look up one entry by exact email + code (for the "check winnings" form)
---     It can never list everyone's email or code, or change anything.
---   You edit data through the Supabase dashboard (Table editor), which uses your
---   privileged login and bypasses these rules.
+-- All money amounts are in USD.
 -- =========================================================
 
 
@@ -41,44 +33,63 @@ create table if not exists public.players (
   code    text not null,
   draw_id integer references public.draws(id),
   numbers integer[] not null,
-  prize   bigint default 0,       -- amount in $ (0 = no prize)
+  prize   bigint default 0,       -- amount in USD (0 = no prize)
   payout  text                    -- 'paid' | 'pending' | null (no prize)
+);
+
+-- The once-a-year headline prize (single row; no winner until it is drawn).
+create table if not exists public.grand_prize (
+  id        integer primary key default 1,
+  title     text not null,
+  amount    bigint not null,      -- amount in USD
+  cadence   text,                 -- e.g. 'Drawn once a year'
+  next_draw text,                 -- e.g. '31 December 2026'
+  winner    text,                 -- null = not drawn yet
+  note      text
 );
 
 
 -- 2. Sample data (replace with your real entries) ----------------------------
 insert into public.draws (id, date, winning, bonus, jackpot) values
-  (1284, 'Sat 16 May 2026', '{4,11,23,28,37,45}',   7, 41200000),
-  (1283, 'Wed 13 May 2026', '{2,9,17,31,40,48}',   22, 33800000),
-  (1282, 'Sat 9 May 2026',  '{6,14,19,25,33,42}',  11, 27500000),
-  (1281, 'Wed 6 May 2026',  '{1,12,20,29,38,44}',   5, 22100000),
-  (1280, 'Sat 2 May 2026',  '{8,15,21,27,36,49}',  18, 19400000)
+  (1284, 'Sat 16 May 2026', '{4,11,23,28,37,45}',   7, 900000),
+  (1283, 'Wed 13 May 2026', '{2,9,17,31,40,48}',   22, 740000),
+  (1282, 'Sat 9 May 2026',  '{6,14,19,25,33,42}',  11, 600000),
+  (1281, 'Wed 6 May 2026',  '{1,12,20,29,38,44}',   5, 480000),
+  (1280, 'Sat 2 May 2026',  '{8,15,21,27,36,49}',  18, 430000)
 on conflict (id) do nothing;
 
 insert into public.players (id, name, city, country, email, code, draw_id, numbers, prize, payout) values
-  ('U-1001','Sophie Dubois','Paris',     'France',         'sophie.dubois@example.com','LALE-7H2K-9QX4', 1284, '{4,11,23,28,37,45}',  41200000, 'paid'),
-  ('U-1002','Marco Rossi',  'Milan',     'Italy',          'marco.rossi@example.com',  'LALE-3F8M-2KP7', 1283, '{2,9,17,31,40,22}',     850000, 'paid'),
-  ('U-1003','Aylin Kaya',   'Istanbul',  'Turkey',        'aylin.kaya@example.com',   'LALE-9QW1-6RT5', 1284, '{4,11,23,28,37,12}',     95000, 'pending'),
-  ('U-1004','James Carter', 'Manchester','United Kingdom', 'james.carter@example.com', 'LALE-5H2N-8LV3', 1282, '{6,14,33,42,1,2}',        2400, 'paid'),
-  ('U-1005','Yuki Tanaka',  'Osaka',     'Japan',          'yuki.tanaka@example.com',  'LALE-2BX9-4MD6', 1282, '{6,14,19,25,40,41}',      2400, 'paid'),
-  ('U-1006','Lena Schmidt', 'Berlin',    'Germany',        'lena.schmidt@example.com', 'LALE-8KL4-1QP2', 1281, '{1,12,20,7,8,9}',          120, 'paid'),
-  ('U-1007','Carlos Silva', 'Sao Paulo', 'Brazil',         'carlos.silva@example.com', 'LALE-6RT3-9WX8', 1280, '{8,15,21,3,5,7}',          120, 'pending'),
-  ('U-1008','Mehmet Demir', 'Ankara',    'Turkey',        'mehmet.demir@example.com', 'LALE-7DF5-2NB4', 1280, '{8,15,36,49,2,4}',        2400, 'pending'),
-  ('U-1009','Emma Johnson', 'Toronto',   'Canada',         'emma.johnson@example.com', 'LALE-1MN7-3KD9', 1284, '{4,2,3,1,5,6}',              0, null),
-  ('U-1010','Olga Ivanova', 'Moscow',    'Russia',         'olga.ivanova@example.com', 'LALE-4PV2-7HG1', 1283, '{10,11,12,13,14,15}',        0, null)
+  ('U-1001','Sophie Dubois','Paris',     'France',         'sophie.dubois@example.com','LALE-7H2K-9QX4', 1284, '{4,11,23,28,37,45}',  900000, 'paid'),
+  ('U-1002','Marco Rossi',  'Milan',     'Italy',          'marco.rossi@example.com',  'LALE-3F8M-2KP7', 1283, '{2,9,17,31,40,22}',    18600, 'paid'),
+  ('U-1003','Aylin Kaya',   'Istanbul',  'Turkey',         'aylin.kaya@example.com',   'LALE-9QW1-6RT5', 1284, '{4,11,23,28,37,12}',    2080, 'pending'),
+  ('U-1004','James Carter', 'Manchester','United Kingdom', 'james.carter@example.com', 'LALE-5H2N-8LV3', 1282, '{6,14,33,42,1,2}',        50, 'paid'),
+  ('U-1005','Yuki Tanaka',  'Osaka',     'Japan',          'yuki.tanaka@example.com',  'LALE-2BX9-4MD6', 1282, '{6,14,19,25,40,41}',      50, 'paid'),
+  ('U-1006','Lena Schmidt', 'Berlin',    'Germany',        'lena.schmidt@example.com', 'LALE-8KL4-1QP2', 1281, '{1,12,20,7,8,9}',          3, 'paid'),
+  ('U-1007','Carlos Silva', 'Sao Paulo', 'Brazil',         'carlos.silva@example.com', 'LALE-6RT3-9WX8', 1280, '{8,15,21,3,5,7}',          3, 'pending'),
+  ('U-1008','Mehmet Demir', 'Ankara',    'Turkey',         'mehmet.demir@example.com', 'LALE-7DF5-2NB4', 1280, '{8,15,36,49,2,4}',        50, 'pending'),
+  ('U-1009','Emma Johnson', 'Toronto',   'Canada',         'emma.johnson@example.com', 'LALE-1MN7-3KD9', 1284, '{4,2,3,1,5,6}',            0, null),
+  ('U-1010','Olga Ivanova', 'Moscow',    'Russia',         'olga.ivanova@example.com', 'LALE-4PV2-7HG1', 1283, '{10,11,12,13,14,15}',      0, null)
+on conflict (id) do nothing;
+
+insert into public.grand_prize (id, title, amount, cadence, next_draw, winner, note) values
+  (1, 'Annual Grand Prize', 10000000, 'Drawn once a year', '31 December 2026', null,
+      'The single biggest Lale Lotto prize. One winner is drawn at the end of each year from all entries.')
 on conflict (id) do nothing;
 
 
 -- 3. Row Level Security ------------------------------------------------------
-alter table public.draws   enable row level security;
-alter table public.players enable row level security;
+alter table public.draws       enable row level security;
+alter table public.players     enable row level security;
+alter table public.grand_prize enable row level security;
 
--- Draws hold no personal data, so they can be read by anyone.
+-- Draws + grand prize hold no personal data, so anyone may read them.
 drop policy if exists "Public read draws" on public.draws;
 create policy "Public read draws"
-  on public.draws for select
-  to anon, authenticated
-  using (true);
+  on public.draws for select to anon, authenticated using (true);
+
+drop policy if exists "Public read grand_prize" on public.grand_prize;
+create policy "Public read grand_prize"
+  on public.grand_prize for select to anon, authenticated using (true);
 
 -- players has NO select policy on purpose: with RLS on and no policy, the public
 -- anon key cannot read the table directly. Access goes only through the two
@@ -94,33 +105,25 @@ returns table (
   id text, name text, city text, country text, draw_id integer,
   numbers integer[], prize bigint, payout text
 )
-language sql
-stable
-security definer
-set search_path = public
+language sql stable security definer set search_path = public
 as $$
   select id, name, city, country, draw_id, numbers, prize, payout
   from public.players
   order by prize desc, id;
 $$;
 
--- The "check winnings" lookup: returns one entry only when BOTH the email and
--- the code match. Without the secret code, nothing comes back.
+-- The "check winnings" lookup: returns one entry only when BOTH email and code match.
 drop function if exists public.check_entry(text, text);
 create function public.check_entry(p_email text, p_code text)
 returns table (
   id text, name text, city text, country text, email text, code text,
   draw_id integer, numbers integer[], prize bigint, payout text
 )
-language sql
-stable
-security definer
-set search_path = public
+language sql stable security definer set search_path = public
 as $$
   select id, name, city, country, email, code, draw_id, numbers, prize, payout
   from public.players
-  where lower(email) = lower(p_email)
-    and lower(code)  = lower(p_code)
+  where lower(email) = lower(p_email) and lower(code) = lower(p_code)
   limit 1;
 $$;
 

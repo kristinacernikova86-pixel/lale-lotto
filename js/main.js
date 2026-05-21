@@ -144,6 +144,18 @@
     return db && db.draws ? db.draws.find((d) => d.id === drawId) || null : null;
   }
 
+  // The once-a-year headline prize (no sensitive data → read directly).
+  async function loadGrandPrize() {
+    const client = supaClient();
+    if (client) {
+      const { data, error } = await client.from("grand_prize").select("*").limit(1).maybeSingle();
+      if (error) return null;
+      return data;
+    }
+    const db = window.LALE_DB;
+    return db && db.grandPrize ? db.grandPrize : null;
+  }
+
   // How many of `numbers` are in the draw's main winning set.
   function countMatches(numbers, draw) {
     if (!draw) return 0;
@@ -291,6 +303,33 @@
     renderTable();
   }
   initWinnersBoard();
+
+  /* ---------- Annual grand prize (winners page) ---------- */
+  async function initGrandPrize() {
+    const el = document.querySelector("[data-grand-prize]");
+    if (!el) return;
+    let gp = null;
+    try { gp = await loadGrandPrize(); } catch (e) { /* ignore */ }
+    if (!gp) return;
+    const cadence = gp.cadence || gp.frequency || "";
+    const nextDraw = gp.next_draw || gp.nextDraw || "";
+    const winnerHtml = gp.winner ? `<b>${gp.winner}</b>` : `<b class="gp-pending">Not yet drawn</b>`;
+    el.innerHTML = `
+      <div class="gp-card">
+        <div class="gp-main">
+          <span class="gp-eyebrow">🏆 ${gp.title || "Annual Grand Prize"}</span>
+          <div class="gp-amount">${formatUSD(gp.amount)}</div>
+          ${gp.note ? `<p class="gp-note">${gp.note}</p>` : ""}
+        </div>
+        <div class="gp-meta">
+          ${cadence ? `<div><span>Frequency</span><b>${cadence}</b></div>` : ""}
+          ${nextDraw ? `<div><span>Next draw</span><b>${nextDraw}</b></div>` : ""}
+          <div><span>Winner</span>${winnerHtml}</div>
+        </div>
+      </div>`;
+    el.hidden = false;
+  }
+  initGrandPrize();
 
   /* ---------- Winnings checker (check page) ----------
      Players don't sign in — they check an entry with the email they played
