@@ -95,7 +95,7 @@
 
   const normDraw = (d) => ({ id: d.id, date: d.date, winning: d.winning || [], bonus: d.bonus, jackpot: d.jackpot });
   const normPlayer = (p) => ({
-    id: p.id, name: p.name, city: p.city, email: p.email, code: p.code,
+    id: p.id, name: p.name, city: p.city, country: p.country, email: p.email, code: p.code,
     drawId: p.draw_id != null ? p.draw_id : p.drawId,
     numbers: p.numbers || [], prize: p.prize || 0, payout: p.payout || null,
   });
@@ -224,7 +224,8 @@
     // City + masked email/code are only shown when present (Supabase board
     // deliberately omits email/code; the local file includes them).
     function subLines(p) {
-      const bits = [p.city].filter(Boolean);
+      const loc = [p.city, p.country].filter(Boolean).join(", ");
+      const bits = [loc].filter(Boolean);
       if (p.email) bits.push(maskEmail(p.email));
       const line1 = bits.length ? `<div class="db-sub">${bits.join(" · ")}</div>` : "";
       const line2 = p.code ? `<div class="db-sub db-code">${maskCode(p.code)}</div>` : "";
@@ -265,7 +266,7 @@
 
     function matchesSearch(p, q) {
       if (!q) return true;
-      return [p.name, p.city, p.code, p.id].filter(Boolean).join(" ").toLowerCase().includes(q);
+      return [p.name, p.city, p.country, p.code, p.id].filter(Boolean).join(" ").toLowerCase().includes(q);
     }
 
     function renderTable() {

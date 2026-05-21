@@ -44,16 +44,17 @@ window.LALE_DB = {
   ],
 
   // Players and their entries. prize is in ₺ (0 = no prize).
+  // Lale Lotto is played online, so winners come from many countries.
   players: [
-    { id: "U-1001", name: "Aylin Kaya",   city: "İstanbul",   email: "aylin.kaya@example.com",   code: "LALE-7H2K-9QX4", drawId: 1284, numbers: [4, 11, 23, 28, 37, 45], prize: 41200000, payout: "paid" },
-    { id: "U-1002", name: "Zeynep Yılmaz", city: "İzmir",     email: "zeynep.yilmaz@example.com", code: "LALE-3F8M-2KP7", drawId: 1283, numbers: [2, 9, 17, 31, 40, 22], prize: 850000,   payout: "paid" },
-    { id: "U-1003", name: "Mehmet Demir",  city: "Ankara",    email: "mehmet.demir@example.com",  code: "LALE-9QW1-6RT5", drawId: 1284, numbers: [4, 11, 23, 28, 37, 12], prize: 95000,    payout: "pending" },
-    { id: "U-1004", name: "Emre Çelik",    city: "Gaziantep", email: "emre.celik@example.com",    code: "LALE-5H2N-8LV3", drawId: 1282, numbers: [6, 14, 33, 42, 1, 2],  prize: 2400,     payout: "paid" },
-    { id: "U-1005", name: "Can Öztürk",    city: "Bursa",     email: "can.ozturk@example.com",    code: "LALE-2BX9-4MD6", drawId: 1282, numbers: [6, 14, 19, 25, 40, 41], prize: 2400,     payout: "paid" },
-    { id: "U-1006", name: "Elif Şahin",    city: "Antalya",   email: "elif.sahin@example.com",    code: "LALE-8KL4-1QP2", drawId: 1281, numbers: [1, 12, 20, 7, 8, 9],   prize: 120,      payout: "paid" },
-    { id: "U-1007", name: "Burak Aydın",   city: "Adana",     email: "burak.aydin@example.com",   code: "LALE-6RT3-9WX8", drawId: 1280, numbers: [8, 15, 21, 3, 5, 7],   prize: 120,      payout: "pending" },
-    { id: "U-1008", name: "Okan Yıldız",   city: "Eskişehir", email: "okan.yildiz@example.com",   code: "LALE-7DF5-2NB4", drawId: 1280, numbers: [8, 15, 36, 49, 2, 4],  prize: 2400,     payout: "pending" },
-    { id: "U-1009", name: "Deniz Arslan",  city: "İstanbul",  email: "deniz.arslan@example.com",  code: "LALE-1MN7-3KD9", drawId: 1284, numbers: [4, 2, 3, 1, 5, 6],    prize: 0,        payout: null },
-    { id: "U-1010", name: "Selin Koç",     city: "Konya",     email: "selin.koc@example.com",     code: "LALE-4PV2-7HG1", drawId: 1283, numbers: [10, 11, 12, 13, 14, 15], prize: 0,       payout: null },
+    { id: "U-1001", name: "Sophie Dubois", city: "Paris",      country: "France",         email: "sophie.dubois@example.com", code: "LALE-7H2K-9QX4", drawId: 1284, numbers: [4, 11, 23, 28, 37, 45], prize: 41200000, payout: "paid" },
+    { id: "U-1002", name: "Marco Rossi",   city: "Milan",      country: "Italy",          email: "marco.rossi@example.com",   code: "LALE-3F8M-2KP7", drawId: 1283, numbers: [2, 9, 17, 31, 40, 22], prize: 850000,   payout: "paid" },
+    { id: "U-1003", name: "Aylin Kaya",    city: "İstanbul",   country: "Türkiye",        email: "aylin.kaya@example.com",    code: "LALE-9QW1-6RT5", drawId: 1284, numbers: [4, 11, 23, 28, 37, 12], prize: 95000,    payout: "pending" },
+    { id: "U-1004", name: "James Carter",  city: "Manchester", country: "United Kingdom", email: "james.carter@example.com",  code: "LALE-5H2N-8LV3", drawId: 1282, numbers: [6, 14, 33, 42, 1, 2],  prize: 2400,     payout: "paid" },
+    { id: "U-1005", name: "Yuki Tanaka",   city: "Osaka",      country: "Japan",          email: "yuki.tanaka@example.com",   code: "LALE-2BX9-4MD6", drawId: 1282, numbers: [6, 14, 19, 25, 40, 41], prize: 2400,     payout: "paid" },
+    { id: "U-1006", name: "Lena Schmidt",  city: "Berlin",     country: "Germany",        email: "lena.schmidt@example.com",  code: "LALE-8KL4-1QP2", drawId: 1281, numbers: [1, 12, 20, 7, 8, 9],   prize: 120,      payout: "paid" },
+    { id: "U-1007", name: "Carlos Silva",  city: "São Paulo",  country: "Brazil",         email: "carlos.silva@example.com",  code: "LALE-6RT3-9WX8", drawId: 1280, numbers: [8, 15, 21, 3, 5, 7],   prize: 120,      payout: "pending" },
+    { id: "U-1008", name: "Mehmet Demir",  city: "Ankara",     country: "Türkiye",        email: "mehmet.demir@example.com",  code: "LALE-7DF5-2NB4", drawId: 1280, numbers: [8, 15, 36, 49, 2, 4],  prize: 2400,     payout: "pending" },
+    { id: "U-1009", name: "Emma Johnson",  city: "Toronto",    country: "Canada",         email: "emma.johnson@example.com",  code: "LALE-1MN7-3KD9", drawId: 1284, numbers: [4, 2, 3, 1, 5, 6],    prize: 0,        payout: null },
+    { id: "U-1010", name: "Olga Ivanova",  city: "Moscow",     country: "Russia",         email: "olga.ivanova@example.com",  code: "LALE-4PV2-7HG1", drawId: 1283, numbers: [10, 11, 12, 13, 14, 15], prize: 0,       payout: null },
   ],
 };

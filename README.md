@@ -51,6 +51,7 @@ lale-lotto/
 ├─ data/database.js          Local fallback / seed data (window.LALE_DB): draws + players
 ├─ data/supabase-config.js   Your Supabase URL + public anon key go here
 ├─ data/supabase-setup.sql   Run this in Supabase to create the tables + security
+├─ data/supabase-migration-international.sql  One-off: switch existing DB to int'l winners
 ├─ css/styles.css        Whole design system (one file)
 ├─ js/main.js            Countdown, mobile nav, winners database, winnings checker
 ├─ assets/logo.svg       Full logo lockup
@@ -79,7 +80,7 @@ even when you open the files directly — no server, no CORS) and exposed as `wi
 ```js
 window.LALE_DB = {
   draws:   [ { id, date, winning: [/* 6 */], bonus, jackpot }, … ],
-  players: [ { id, name, city, email, code, drawId, numbers: [/* 6 */], prize, payout }, … ],
+  players: [ { id, name, city, country, email, code, drawId, numbers: [/* 6 */], prize, payout }, … ],
 };
 ```
 
@@ -138,8 +139,8 @@ There's no player account or password. Every entry has a **unique code**. On `ch
 enters **their email + that code**, and the page shows their line, the winning numbers and any
 prize. With Supabase connected this goes through the secure `check_entry` function (the code never
 travels to the public board); without it, the lookup runs against the local `data/database.js`.
-Try it with a sample row — e.g. `aylin.kaya@example.com` + `LALE-7H2K-9QX4` (a jackpot winner) or
-`selin.koc@example.com` + `LALE-4PV2-7HG1` (entered, no prize).
+Try it with a sample row — e.g. `sophie.dubois@example.com` + `LALE-7H2K-9QX4` (a jackpot winner) or
+`olga.ivanova@example.com` + `LALE-4PV2-7HG1` (entered, no prize).
 
 The codes are `{{check_code}}` in the emails (e.g. `LALE-XXXX-XXXX`) and `{{check_url}}` points at
 the hosted `check.html`. Keep the "no fee, no password to claim" wording — that's what protects
