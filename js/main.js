@@ -155,8 +155,8 @@
     return !!(draw && numbers.map(Number).includes(Number(draw.bonus)));
   }
 
-  function formatTRY(amount) {
-    return "₺" + Number(amount || 0).toLocaleString("en-US");
+  function formatUSD(amount) {
+    return "$" + Number(amount || 0).toLocaleString("en-US");
   }
 
   function maskEmail(email) {
@@ -210,7 +210,7 @@
     };
     setStat("[data-stat-players]", players.length);
     setStat("[data-stat-winners]", winners.length);
-    setStat("[data-stat-paid]", formatTRY(paidTotal));
+    setStat("[data-stat-paid]", formatUSD(paidTotal));
     setStat("[data-stat-pending]", pendingCount);
 
     // --- Row rendering ---
@@ -245,7 +245,7 @@
         <td><div class="db-player">${drawLabel}</div><div class="db-sub">${drawDate}</div></td>
         <td><div class="balls db-balls">${ballsHtml(p.numbers, p.draw)}</div></td>
         <td class="num-col"><b class="${p.matches >= 3 ? "gold" : "muted"}">${matchLabel}</b></td>
-        <td>${p.prize ? `<b class="db-prize">${formatTRY(p.prize)}</b>` : '<span class="muted">—</span>'}</td>
+        <td>${p.prize ? `<b class="db-prize">${formatUSD(p.prize)}</b>` : '<span class="muted">—</span>'}</td>
         <td><span class="db-badge ${st.cls}">${st.label}</span></td>
       </tr>`;
     }
@@ -417,7 +417,7 @@
           winning: draw ? draw.winning : [],
           bonus: draw ? draw.bonus : undefined,
           matches: countMatches(player.numbers, draw),
-          prize: player.prize ? formatTRY(player.prize) : "",
+          prize: player.prize ? formatUSD(player.prize) : "",
         });
       } catch (err) {
         console.error("Lale Lotto: check failed —", err);

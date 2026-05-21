@@ -84,7 +84,7 @@ window.LALE_DB = {
 };
 ```
 
-`prize` is an integer in ₺ (`0` = no prize) and `payout` is `"paid" | "pending" | null`. A
+`prize` is an integer in $ (`0` = no prize) and `payout` is `"paid" | "pending" | null`. A
 player's **matches** are *computed* against their draw, so winning numbers live in one place only.
 
 This file is the **fallback / seed**: the site uses it only while Supabase is not configured (see
